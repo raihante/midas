@@ -13,7 +13,8 @@
 - [x] Auto Play Game
 - [x] Auto Check-IN
 - [x] Auto Complete Task  
-- [x] Auto Claim Refferal 
+- [x] Auto Claim Refferal
+- [x] Auto Generate Token 
 
 
 ## 🚀 Authors
