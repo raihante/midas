@@ -91,9 +91,11 @@ def getuser(querybro):
         Log.warn('check-in Day : '+ str(jsonsd))
         Log.warn('tickets : '+ str(jsontix))
         tix = jsontix
-
-        reqv = urllib.request.Request(urlvisit, None, header, method='PATCH')
-        urllib.request.urlopen(reqv)
+        try:
+            reqv = urllib.request.Request(urlvisit, None, header, method='PATCH')
+            urllib.request.urlopen(reqv)
+        except:
+            None
     except:
         Log.error('[getuser] error restarting, check your query_id / user_id maybe expired')
 
