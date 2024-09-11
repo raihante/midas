@@ -30,6 +30,7 @@ def banner():
 def runforeva():
     with open('quentod.txt', 'r') as file:
         queryh = file.read().splitlines()
+        
     try:
         value = True
         while value:
@@ -54,9 +55,15 @@ def runforeva():
                         save_token(username, token)
                 
                 postrequest(token)
-    except:
+            
+            Log.success('All accounts processed. Waiting for 6 hours...')
+            sleep(6 * 60 * 60)  # Wait for 6 hours (in seconds)
+
+    except Exception as e:
         sleep(10)
+        Log.error(f'[MAIN] error, restarting: {e}')
         runforeva()
+
 
 def is_token_valid(token):
     """ Check if the provided token is valid. """
@@ -79,6 +86,7 @@ def is_token_valid(token):
             return False
     except Exception as e:
         Log.error(f'[is_token_valid] Failed to check token validity: {e}')
+        sleep(1 * 60 * 60)
         return False
 
 
@@ -317,10 +325,30 @@ def getreff(tomket):
     except Exception as e:
         Log.error(f'[get_reff] Failed to getting refferal : {e}')
 
-def sleep(num):
-    for i in range(num):
-        print(f"wait {num - i} seconds", end='\r')
-        time.sleep(1)
+def sleep(total_seconds):
+    """Pause execution for `total_seconds` while printing remaining time in minutes, hours, seconds, and milliseconds."""
+    
+    start_time = time.time()
+    end_time = start_time + total_seconds
+
+    while True:
+        current_time = time.time()
+        remaining_time = end_time - current_time
+
+        if remaining_time <= 0:
+            print("Time's up!                      ", end='\r') 
+            break
+        
+
+        hours = int(remaining_time // 3600)
+        minutes = int((remaining_time % 3600) // 60)
+        seconds = int(remaining_time % 60)
+
+        # Print the formatted time remaining
+        time_remaining = f"{hours:02}:{minutes:02}:{seconds:02}"
+        print(f"[WAIT TIME: {time_remaining}]", end='\r')
+        
+        time.sleep(0.1)
 
 def postrequest(bearer):
     try:
