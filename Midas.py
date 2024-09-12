@@ -86,7 +86,7 @@ def is_token_valid(token):
             return False
     except Exception as e:
         Log.error(f'[is_token_valid] Failed to check token validity: {e}')
-        sleep(1 * 60 * 60)
+        sleep(300)
         return False
 
 
@@ -365,7 +365,7 @@ def postrequest(bearer):
         runforeva()
 
     print('-==========[github.com/raihante/midas]==========-')
-    sleep(60)
+    sleep(300)
 
 if __name__ == "__main__":
     try:
