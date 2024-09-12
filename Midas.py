@@ -70,8 +70,16 @@ def is_token_valid(token):
     bear = 'Bearer ' + token
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
-        'Connection': 'keep-alive',
         'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'Cache-Control': 'no-cache',
+        'Host': 'api-tg-app.midas.app',
+        'Origin': 'https://prod-tg-app.midas.app',
+        'Pragma': 'no-cache',
+        'Referer': 'https://prod-tg-app.midas.app/',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
         'Content-Type': 'application/json',
         'Authorization': bear
     }
@@ -109,8 +117,16 @@ def get_existing_token(username):
 def gettoken(querybro):
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
-        'Connection': 'keep-alive',
         'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Cache-Control': 'no-cache',
+        'Host': 'api-tg-app.midas.app',
+        'Origin': 'https://prod-tg-app.midas.app',
+        'Pragma': 'no-cache',
+        'Referer': 'https://prod-tg-app.midas.app/',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
         'Content-Type': 'application/json'
     }
     try:
@@ -135,8 +151,16 @@ def getuser(querybro):
     bear = 'Bearer ' + querybro
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
-        'Connection': 'keep-alive',
         'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'Cache-Control': 'no-cache',
+        'Host': 'api-tg-app.midas.app',
+        'Origin': 'https://prod-tg-app.midas.app',
+        'Pragma': 'no-cache',
+        'Referer': 'https://prod-tg-app.midas.app/',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
         'Content-Type': 'application/json',
         'Authorization': bear
     }
@@ -169,8 +193,16 @@ def getcheckin(querybro):
     bear = 'Bearer ' + querybro
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
-        'Connection': 'keep-alive',
         'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'Cache-Control': 'no-cache',
+        'Host': 'api-tg-app.midas.app',
+        'Origin': 'https://prod-tg-app.midas.app',
+        'Pragma': 'no-cache',
+        'Referer': 'https://prod-tg-app.midas.app/',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
         'Content-Type': 'application/json',
         'Authorization': bear
     }
@@ -182,7 +214,7 @@ def getcheckin(querybro):
         response = urllib.request.urlopen(req).read()
         result = json.loads(response.decode('utf-8'))
         jsonclaimable = result['claimable']
-        if jsonclaimable:
+        if jsonclaimable == True:
             try:
                 req = urllib.request.Request(url, None, header, method='POST')
                 urllib.request.urlopen(req)
@@ -190,7 +222,7 @@ def getcheckin(querybro):
             except:
                 pass
     except Exception as e:
-        Log.error(f'[getuser] Failed to check-in : {e}')
+        Log.error(f'[checkin] Failed to check-in : {e}')
 
 def getname(querybro):
     try:
@@ -220,8 +252,16 @@ def playgame(tomket):
     bear = 'Bearer ' + tomket
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
-        'Connection': 'keep-alive',
         'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'Cache-Control': 'no-cache',
+        'Host': 'api-tg-app.midas.app',
+        'Origin': 'https://prod-tg-app.midas.app',
+        'Pragma': 'no-cache',
+        'Referer': 'https://prod-tg-app.midas.app/',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
         'Content-Type': 'application/json',
         'Authorization': bear
     }
@@ -236,15 +276,23 @@ def playgame(tomket):
             result = json.loads(response.decode('utf-8'))
             jsonreward = result.get('points', 0)
             Log.success('success play game, reward : ' + str(jsonreward))
-            sleep(5)
+            sleep(15)
         except Exception as e:
             Log.error(f'[play_game] Failed to starting game : {e}')
 
 def gettask(tomket):
     bear = 'Bearer '+tomket
     header =   {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
-            'Connection': 'keep-alive',
             'Accept': 'application/json, text/plain, */*',
+            'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+            'Cache-Control': 'no-cache',
+            'Host': 'api-tg-app.midas.app',
+            'Origin': 'https://prod-tg-app.midas.app',
+            'Pragma': 'no-cache',
+            'Referer': 'https://prod-tg-app.midas.app/',
+            'Sec-Fetch-Dest': 'empty',
+            'Sec-Fetch-Mode': 'cors',
+            'Sec-Fetch-Site': 'same-site',
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': bear
         }
@@ -265,7 +313,7 @@ def gettask(tomket):
                 try:
                     urlstart = 'https://api-tg-app.midas.app/api/tasks/start/'+str(anjoy[0])
                     req2 = urllib.request.Request(urlstart, None, header, method='POST')
-                    urllib.request.urlopen(req2).read()
+                    urllib.request.urlopen(req2)
                 except:
                     pass
             elif item['state'] == 'CLAIMABLE':
@@ -293,8 +341,16 @@ def getreff(tomket):
     bear = 'Bearer ' + tomket
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0',
-        'Connection': 'keep-alive',
         'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'Cache-Control': 'no-cache',
+        'Host': 'api-tg-app.midas.app',
+        'Origin': 'https://prod-tg-app.midas.app',
+        'Pragma': 'no-cache',
+        'Referer': 'https://prod-tg-app.midas.app/',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-site',
         'Content-Type': 'application/json',
         'Authorization': bear
     }
@@ -352,8 +408,8 @@ def sleep(total_seconds):
 
 def postrequest(bearer):
     try:
-        getuser(bearer)
         getcheckin(bearer)
+        getuser(bearer)
         if tix > 0:
             Log.warn('have a game tickets!')
             Log.warn('start playing..')
