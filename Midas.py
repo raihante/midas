@@ -91,10 +91,12 @@ class MidasBot:
             else:
                 logging.error(f"[validate_token] HTTP {response.status_code}")
                 print(f"[{timestamp}] - {Fore.RED}Error: Token validation failed. HTTP {response.status_code}{Fore.RESET}")
+                print(f"[{timestamp}] - {Fore.RED}Tips: Try to restart the internet / wifi{Fore.RESET}")
                 return False
         except Exception as e:
             logging.error(f"[validate_token] Error: {e}")
             print(f"[{timestamp}] - {Fore.RED}Error: Token validation failed due to {e}{Fore.RESET}")
+            print(f"[{timestamp}] - {Fore.RED}Tips: Try to restart the internet / wifi{Fore.RESET}")
             return False
 
     def get_token(self, query_id):
@@ -110,10 +112,12 @@ class MidasBot:
             else:
                 logging.error(f"[get_token] HTTP {response.status_code}")
                 print(f"[{timestamp}] - {Fore.RED}Error: Failed to get token. HTTP {response.status_code}{Fore.RESET}")
+                print(f"[{timestamp}] - {Fore.RED}Tips: Try to restart the internet / wifi{Fore.RESET}")
                 return None
         except Exception as e:
             logging.error(f"[get_token] Error: {e}")
             print(f"[{timestamp}] - {Fore.RED}Error: Failed to get token due to {e}{Fore.RESET}")
+            print(f"[{timestamp}] - {Fore.RED}Tips: Try to restart the internet / wifi{Fore.RESET}")
             return None
 
     def process_accounts(self):
